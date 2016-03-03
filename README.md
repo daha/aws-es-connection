@@ -7,7 +7,6 @@ from awses.connection import AWSConnection
 from elasticsearch import Elasticsearch
 
 es = Elasticsearch(connection_class=AWSConnection,
-                   region='us-east-1',
                    host='search-domain-b4tn7dis4q2epw6g37akda6nh4.us-east-1.es.amazonaws.com')
 
 es.search()

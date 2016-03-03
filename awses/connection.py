@@ -8,10 +8,10 @@ import os
 
 class AWSConnection(Connection):
 
-    def __init__(self, host, region, **kwargs):
-        super(AWSConnection, self).__init__(host, region, **kwargs)
+    def __init__(self, host, port=9200, **kwargs):
+        super(AWSConnection, self).__init__(host, port, **kwargs)
         self.host = host
-        self.region = region
+        self.region = kwargs['region'] if 'region' in kwargs else os.environ.get('AWS_REGION')
         self.token = kwargs['session_token'] if 'session_token' in kwargs else os.environ.get('AWS_SESSION_TOKEN')
         self.secret = kwargs['secret_key'] if 'secret_key' in kwargs else os.environ.get('AWS_SECRET_ACCESS_KEY')
         self.key = kwargs['access_key'] if 'access_key' in kwargs else os.environ.get('AWS_ACCESS_KEY_ID')
